@@ -4,6 +4,7 @@ import androidx.compose.ui.unit.sp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -19,6 +20,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.example.shaya.ui.theme.ShayaTheme
 
 
@@ -39,11 +43,16 @@ class MainActivity : ComponentActivity() {
 fun MyApp() {
     Scaffold(
         topBar = { CustomTopBar() }
-    ) {
-        // Add your screen content here
+    ) { paddingValues ->
+        Text(
+            text = "Hello from SHAYA",
+            modifier = Modifier
+                .padding(paddingValues)
+                .padding(16.dp)
+        )
     }
 }
-
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomTopBar() {
     TopAppBar(
@@ -85,7 +94,7 @@ fun CustomTopBar() {
 @Preview(showBackground = true)
 @Composable
 fun PreviewCustomTopBar() {
-    TopBarAppTheme {
+    ShayaTheme {
         MyApp()
     }
 }
